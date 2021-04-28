@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { setActiveCity } from '../actions';
 
 class ListItem extends Component {
+  handleClick = () => {
+    this.props.setActiveCity(this.props.city);
+  }
+
   render() {
     return (
-      <div className="list-group-item">{this.props.city.name}</div>
+      <div className="list-group-item" onClick={this.handleClick}>{this.props.city.name}</div>
     );
   }
 }
 
-export default ListItem;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setActiveCity },
+    dispatch
+  );
+}
+
+export default connect(null, mapDispatchToProps)(ListItem);
