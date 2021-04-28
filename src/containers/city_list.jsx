@@ -7,7 +7,7 @@ class CityList extends Component {
       <div className="cities">
         {this.props.cities.map(city => <ListItem city={city} key={city.slug} />)}
       </div>
-    )
+    );
   }
 }
 
